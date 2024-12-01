@@ -3,12 +3,12 @@ import CreateObstcaleOjbect from "./CreateObstacleObject.js";
 import { canvasWidth, canvasHeight } from "./canvas.js";
 import update from "./update.js";
 
-export const gap = 50
+export const gap = 200
 
 const player = new CreatePlayerObject(
   canvasWidth / 2,
   canvasHeight / 2,
-  30,
+  20,
   "yellow"
 );
 
@@ -25,4 +25,4 @@ document.addEventListener("keydown", (event) => {
     player.canJump = true;
   }
 });
-// update(player, firstUpperPipe, firstLowerPipe, secondUpperPipe, secondLowerPipe);
+update(player, firstUpperPipe, firstLowerPipe, secondUpperPipe, secondLowerPipe);
