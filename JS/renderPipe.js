@@ -1,20 +1,17 @@
 import { canvasWidth } from "./canvas.js"
+import checkCollision from "./checkCollision.js"
 import randomY from "./randomY.js"
 import { gap } from "./script.js"
 
-export default function renderPipe(firstUpperPipe, firstLowerPipe, secondUpperPipe, secondLowerPipe) {
+export default function renderPipe(player, firstUpperPipe, firstLowerPipe, secondUpperPipe, secondLowerPipe) {
   if (firstUpperPipe.x != null) {
     firstUpperPipe.draw()
     firstLowerPipe.draw()
-    firstUpperPipe.x -= 1
-    firstLowerPipe.x -= 1
   }
 
   if (secondUpperPipe.x != null) {
     secondUpperPipe.draw()
     secondLowerPipe.draw()
-    secondUpperPipe.x -= 1
-    secondLowerPipe.x -= 1
   }
 
   if (firstUpperPipe.x == -firstUpperPipe.width) {
@@ -35,5 +32,18 @@ export default function renderPipe(firstUpperPipe, firstLowerPipe, secondUpperPi
     firstUpperPipe.height = randomY()
     firstLowerPipe.x = canvasWidth + 90;
     firstLowerPipe.y = firstUpperPipe.height + gap
+  }
+
+  checkCollision(player, firstUpperPipe, firstLowerPipe, secondUpperPipe, secondLowerPipe)
+  if (!player.isCollided) {
+    if (firstUpperPipe.x != null) {
+      firstUpperPipe.x -= 2
+      firstLowerPipe.x -= 2
+    }
+    if (secondUpperPipe.x != null) {
+      secondUpperPipe.x -= 2
+      secondLowerPipe.x -= 2
+
+    }
   }
 }

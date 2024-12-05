@@ -7,6 +7,7 @@ export default function CreatePlayerObject(x, y, radius, color) {
   this.acceleration = 0.5
   this.color = color
   this.canJump = false
+  this.isCollided = false
   this.draw = function() {
     ctx.beginPath();
     ctx.fillStyle = this.color
